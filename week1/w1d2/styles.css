@@ -22,10 +22,6 @@ img {
   height: auto;
 }
 
-/* img:hover {
-  size-adjust: 110%;
-} */
-
 a:hover {
   color: pink;
 }
