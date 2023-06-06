@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px;
+  margin: 10px;
+  border: 3px solid green;
+  width: 80%;
+  text-align: center;
+}
+
+h1 {
+  color: green;
+  font-size: 75px;
+}
+
+p {
+  color: blue;
+  font-size: 50px;
+}
+
+img {
+  width: 300px;
+  height: auto;
+}
+
+/* img:hover {
+  size-adjust: 110%;
+} */
+
+a:hover {
+  color: pink;
+}
+
+.link {
+  color: orange;
+}
+
+.image-container {
+  text-align: center;
+  margin-bottom: 55px;
+}
