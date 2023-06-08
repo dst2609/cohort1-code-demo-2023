@@ -22,3 +22,11 @@ removeBtn.addEventListener("click", function () {
     list.removeChild(lastItem);
   }
 });
+
+// Alternate way to write the removeBtn Function:
+
+// function removeBtnEvent() {
+//   const list = document.querySelector("#list");
+//   const lastItem = list.lastElementChild;
+//   if (lastItem) list.removeChild(lastItem);
+// }
