@@ -1,0 +1,11 @@
+.counter {
+  margin-top: 20px;
+}
+
+.counter p {
+  font-size: 50px;
+}
+
+.counter button {
+  font-size: 20px;
+}
