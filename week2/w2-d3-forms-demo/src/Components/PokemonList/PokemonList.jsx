@@ -16,6 +16,8 @@ const PokemonList = () => {
       });
   }, []);
 
+  //axios.get(url).then(handle the response).catch(handle errors)
+
   return (
     <div>
       <div>Display Pokemon from the api link</div>
