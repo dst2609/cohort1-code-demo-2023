@@ -35,4 +35,16 @@ router.put("/:id", (request, response) => {
   }
 });
 
+//Delete a user by ID
+router.delete("/:id", (request, response) => {
+  const userId = parseInt(request.params.id);
+
+  const deletedUser = userModel.deleteUser(userId);
+  if (deletedUser) {
+    response.json(deletedUser);
+  } else {
+    response.status(404).json({ error: "User not found" });
+  }
+});
+
 module.exports = router;

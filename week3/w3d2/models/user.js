@@ -31,12 +31,20 @@ const updateUser = (id, name) => {
   return null;
 };
 
-//other functions
+//Delete a user by ID
+const deleteUser = (id) => {
+  const userIndex = users.findIndex((user) => user.id === id);
+  if (userIndex !== -1) {
+    const deletedUser = users.splice(userIndex, 1)[0];
+    return deletedUser;
+  }
+  return null;
+};
 
 module.exports = {
   getAllUsers,
   addUser,
   getUserByID,
   updateUser,
-  //other functioner
+  deleteUser,
 };
