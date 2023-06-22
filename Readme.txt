@@ -1,1 +1,1 @@
-This repository contains the live coding done during the Lesson.
+This repository contains the live coding demo done during the Lesson.
