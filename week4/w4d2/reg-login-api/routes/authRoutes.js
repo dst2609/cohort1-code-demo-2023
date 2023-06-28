@@ -3,13 +3,14 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+//Import the pool/db information
 const pool = require("../db/pool");
 
 //Registration route
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
-  //password
+  // encrpyt password
   try {
     //Generate salt with cost factor
     const saltRounds = 10;
@@ -24,9 +25,11 @@ router.post("/register", async (req, res) => {
             RETURNING *
         `;
 
+    //$1 will get name, $2 will get email, $3 will get hashedPassword
     const values = [name, email, hashedPassword];
     const result = await pool.query(createUserQuery, values);
 
+    //if all this works and no error - Status code 201 - successful entry
     res.status(201).json({
       message: "User registered successfully",
       user: result.rows[0],
@@ -42,18 +45,24 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    //check if the email entered by the user exists in the DB.
     const getUserQuery = `
             SELECT * FROM users
             WHERE email = $1
         `;
 
+    //execute the query
     const result = await pool.query(getUserQuery, [email]);
+    //store the user data returned from the query
     const user = result.rows[0];
 
     if (!user) {
       return res.status(404).json({ message: "User not found!" });
     }
 
+    //check if the password entered is correct
+    //user.password is the password which is stored in the DB
+    //password is the user input
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
