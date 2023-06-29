@@ -20,7 +20,7 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
-//Execute the SQL script to create a table caleld cars
+//Execute the SQL script to create a table called cars
 pool
   .query(sqlScript)
   .then(() => {
