@@ -23,7 +23,7 @@ const pool = new Pool({
 pool
   .query(sqlScript)
   .then(() => {
-    console.log("Table create query successfully");
+    console.log("Table create query successfully executed");
   })
   .catch((error) => {
     console.error("Error creating table", error);
