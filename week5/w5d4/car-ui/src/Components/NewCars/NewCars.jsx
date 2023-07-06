@@ -11,6 +11,7 @@ const NewCars = () => {
       const randomValue = Math.random(); // Generate a random value
 
       //advanced- optional [cache]
+      //using cacheBust is advanced topic- its optional
       const response = await axios.get(
         `http://localhost:3001/api/cars?_cacheBust=${randomValue}`
       );
