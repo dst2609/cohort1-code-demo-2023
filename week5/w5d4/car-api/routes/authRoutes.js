@@ -1,7 +1,7 @@
 //imports
 const express = require("express");
 const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 const pool = require("../db/pool");
 
@@ -27,17 +27,17 @@ router.post("/register", async (req, res) => {
     const result = await pool.query(createUserQuery, values);
 
     // Generate and sign JWT token
-    // const token = jwt.sign(
-    //   { userId: result.rows[0].id, userName: result.rows[0].name },
-    //   "your-secret-key",
-    //   {
-    //     expiresIn: "1h",
-    //   }
-    // );
+    const token = jwt.sign(
+      { userId: result.rows[0].id, userName: result.rows[0].name },
+      "my-very-secret-key-not-hidden",
+      {
+        expiresIn: "1h",
+      }
+    );
 
     res.status(201).json({
       message: "User registered successfully",
-      // token: token,
+      token: token,
       user: result.rows[0],
     });
   } catch (error) {
@@ -70,17 +70,17 @@ router.post("/login", async (req, res) => {
     }
 
     // Generate and sign JWT token
-    // const token = jwt.sign(
-    //   { userId: user.id, userName: user.name },
-    //   "secret-key",
-    //   {
-    //     expiresIn: "1h",
-    //   }
-    // );
+    const token = jwt.sign(
+      { userId: user.id, userName: user.name },
+      "secret-key",
+      {
+        expiresIn: "1h",
+      }
+    );
 
     res.status(200).json({
       message: "Login successful",
-      // token: token,
+      token: token,
       user: {
         id: user.id,
         name: user.name,

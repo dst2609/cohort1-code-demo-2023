@@ -32,7 +32,7 @@ const pool = new Pool({
 pool
   .query(sqlScript)
   .then(() => {
-    console.log("Table created successfully");
+    console.log("Tables created successfully");
   })
   .catch((error) => {
     console.error("Error creating table:", error);

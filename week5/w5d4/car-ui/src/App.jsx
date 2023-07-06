@@ -19,7 +19,7 @@ const App = () => {
       const token = Cookies.get("token");
       if (token) {
         const decodedToken = jwtDecode(token);
-        setUserName(decodedToken.userName);
+        setUserName(decodedToken.userName); //get username
         if (decodedToken.exp * 1000 > Date.now()) {
           setLoggedIn(true);
         } else {
@@ -72,7 +72,7 @@ const App = () => {
         const { token } = response.data;
         Cookies.set("token", token); // Set the token as a cookie
         setLoggedIn(true);
-        setLoginError("");
+        // setLoginError("");
         console.log(response.data.message);
         setUserName(response.data.user.name);
       } else {
