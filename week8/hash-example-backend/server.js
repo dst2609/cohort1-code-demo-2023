@@ -3,7 +3,12 @@ const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const app = express();
 
-app.use(cors("http://localhost:5173/")); // Enable CORS for all routes
+// Configure CORS options to allow access only from localhost:5173
+const corsOptions = {
+  origin: "http://localhost:5173",
+};
+
+app.use(cors(corsOptions)); // Enable CORS with the specified options
 
 app.use(express.json());
 
