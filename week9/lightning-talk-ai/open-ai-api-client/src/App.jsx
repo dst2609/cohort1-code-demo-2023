@@ -5,8 +5,8 @@ import Chat from "./Components/Chat/Chat";
 //App component only renders the required component
 const App = () => {
   return (
-    <ImageFetcher />
-    // <Chat />
+    // <ImageFetcher />
+    <Chat />
   );
 };
 
